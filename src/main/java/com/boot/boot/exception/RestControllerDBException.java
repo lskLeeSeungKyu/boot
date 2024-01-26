@@ -20,21 +20,21 @@ public class RestControllerDBException {
     @ExceptionHandler(DataAccessException.class)
     @ResponseBody
     public Map<String, String> DataAccessException(DataAccessException e) {
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> resultMap = new HashMap<>();
 
         String errorMessage = e.getMessage();
         Throwable cause = e.getCause();
 
-        map.put("result", "fail");
-        map.put("errorMessage", errorMessage);
+        resultMap.put("result", "fail");
+        resultMap.put("errorMessage", errorMessage);
         log.info("writeBoard errorLog = {}", errorMessage);
 
         if(cause != null) {
             String errorCause = cause.getMessage();
-            map.put("errorCause", errorCause);
+            resultMap.put("errorCause", errorCause);
             log.info("writeBoard errorLog = {}", errorCause);
         }
 
-        return map;
+        return resultMap;
     }
 }

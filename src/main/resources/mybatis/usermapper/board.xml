@@ -4,14 +4,18 @@
 
 <mapper namespace="com.boot.boot.dao.BoardDAO">
     <insert id="writeBoard">
-        INSERT INTO BOARD (TITLE, CONTENT, WRITER) VALUES (#{title}, #{content}, #{writer})
+        INSERT INTO "TOY_PROJECT".BOARD (TITLE, CONTENT, WRITER) VALUES (#{title}, #{content}, #{writer})
     </insert>
+
+    <delete id="deleteBoard">
+        DELETE FROM "TOY_PROJECT".BOARD WHERE ID = #{boardId}
+    </delete>
 
     <select id="selectBoard" resultType="BoardDTO">
         SELECT ID, TITLE, CONTENT, WRITER FROM "TOY_PROJECT".BOARD WHERE ID = #{boardId}
     </select>
 
-    <select id="selectBoardAll" resultType="BoardDTO">
+    <select id="selectBoardAll" resultType="Map">
         SELECT ID, TITLE, CONTENT, WRITER FROM "TOY_PROJECT".BOARD
     </select>
 </mapper>

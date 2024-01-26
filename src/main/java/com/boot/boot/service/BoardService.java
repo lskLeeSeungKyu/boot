@@ -18,11 +18,20 @@ public class BoardService {
 
     @Transactional
     public Map<String, String> writeBoard(BoardDTO boardDTO) {
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> resultMap = new HashMap<>();
 
         boardDAO.writeBoard(boardDTO);
-        map.put("result", "success");
-        return map;
+        resultMap.put("result", "success");
+        return resultMap;
+    }
+
+    @Transactional
+    public Map<String, String> deleteBoard(Map<String, Integer> map) {
+        Map<String, String> resultMap = new HashMap<>();
+
+        boardDAO.deleteBoard(map);
+        resultMap.put("result", "success");
+        return resultMap;
     }
 
     @Transactional(readOnly = true)

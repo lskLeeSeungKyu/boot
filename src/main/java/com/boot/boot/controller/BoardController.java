@@ -26,7 +26,12 @@ public class BoardController {
     }
 
     @PostMapping("/writeBoard")
-    public Map<String, String> writeBoard(BoardDTO boardDTO) {
+    public Map<String, String> writeBoard(@RequestBody BoardDTO boardDTO) {
         return boardService.writeBoard(boardDTO);
+    }
+
+    @PostMapping("/deleteBoard")
+    public Map<String, String> deleteBoard(@RequestBody Map<String, Integer> map) {
+        return boardService.deleteBoard(map);
     }
 }
